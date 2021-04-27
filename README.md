@@ -1,2 +1,2 @@
 # Object-Detection-with-YOLO
-This is a repository that contains all of the code for my implementation of the Object Detection algorithm You-Only-Look-Once(YOLO) using OpenCV and the YOLO pre-trained model. I implemented the algorithms for images, videos and real-time object detection.
+This is a repository that contains all of the code for my implementation of the Object Detection algorithm You-Only-Look-Once(YOLO) using OpenCV and the YOLO pre-trained model. I implemented the algorithms for images, videos and real-time object detection. The YOLO.py file is the file that contains the code for my YOLO implementation for images, the other file livepredictions.py is for making detections on real-time video.
