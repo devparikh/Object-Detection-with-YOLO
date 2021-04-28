@@ -62,20 +62,28 @@ nms = cv2.dnn.NMSBoxes(bounding_boxes, confidence, thres, nms_threshold)
 
 COLOURS = []
 while len(COLOURS) < 80:
+  # here we essentially just want to find a random red value, green value, and blue value to come up with a rgb colour
   red = random.randint(0, 255)
   green = random.randint(0, 255)
   blue = random.randint(0, 255)
+  # we are going to create an rgb colour here
   colour = [red, green, blue]
+  # appending this colour to the list to it can be used later
   COLOURS.append(colour)
   
-  
-LABEL = []
+# in this function we are just drawing the bounding box and then displaying the image
 def draw_bounding_box(confidence, bounding_boxes, classid, classes, COLOURS):
+  # here we are checking if there is any bounding boxes after non-maxima supression
   if len(nms) > 0:
+    # we collapse the array into a 1-dimensional vector to iterate over
     for i in nms.flatten():
+      # we want to choice a random colour from the COLOURS list
       colours = random.choice(COLOURS)
-      drawing_bounding_box = cv2.rectangle((x,y), (x+image_size, y+image_size), colours, 2)
+      # drawing the bounding box
+      cv2.rectangle((x,y), (x+image_size, y+image_size), colours, 2)
+      # labelling the bounding box
       cv2.putText(blob, "class", classid, "confidence", confidence, (x,y), cv2.FONT_HERSHEY_COMPLEX, colours, 2)
+    # displaying the bounding box
     cv2.imshow("Image", blob)
-    
+# running the function with the needed parameters     
 draw_bounding_box(confidence, bounding_boxes, classid, COLOURS, classes)
