@@ -73,12 +73,9 @@ LABEL = []
 def draw_bounding_box(confidence, bounding_boxes, classid, classes, COLOURS):
   if len(nms) > 0:
     for i in nms.flatten():
-      for i in classid:
-        label = classes[i]
-        LABEL.append(label)
-        
-    colours = random.choice(COLOURS)
-    cv2.rectangle((x,y), (x+image_size, y+image_size), colours, 2)
-    cv2.putText(blob, "class" + classid + "confidence" + confidence, (x,y), cv2.FONT_HERSHEY_COMPLEX, colours, 2)
+      colours = random.choice(COLOURS)
+      drawing_bounding_box = cv2.rectangle((x,y), (x+image_size, y+image_size), colours, 2)
+      cv2.putText(blob, "class" + classid + "confidence" + confidence, (x,y), cv2.FONT_HERSHEY_COMPLEX, colours, 2)
+    cv2.imshow("Image", blob)
     
 draw_bounding_box(confidence, bounding_boxes, classid, COLOURS, classes)
